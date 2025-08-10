@@ -6,7 +6,7 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 import { SiYoutubemusic } from "react-icons/si";
 import { FiInstagram, FiMail, FiSend } from "react-icons/fi";
 import CV from "../../assets/Noor_Mohammad_resume.pdf";
-import { bannerImg } from "../../assets/index";
+import { avatarImg } from "../../assets/index";
 
 const Left = () => {
   const [text] = useTypewriter({
@@ -21,40 +21,28 @@ const Left = () => {
       <div className="w-full h-3/5">
         <img
           className="w-full h-full object-cover rounded-2xl"
-          src={bannerImg}
-          loading="priority"
-          alt="bannerImage"
+          src={avatarImg}
+          loading="eager"
+          alt="avatar of Yuankai Li"
         />
       </div>
       <div className="w-full h-2/5 flex flex-col justify-between border-t-0 rounded-bl-xl rounded-br-xl">
         <div className="flex flex-col items-center gap-2 py-10">
-          <h1 className="text-textColor text-4xl font-semibold">John Doe</h1>
+          <h1 className="text-textColor text-4xl font-semibold">Yuankai Li</h1>
           <p className="text-base text-designColor tracking-wide">
             {text}
-            <Cursor cursorBlinking="false" cursorStyle="|" />
+            <Cursor cursorBlinking={false} cursorStyle="|" />
           </p>
           <div className="flex justify-center gap-2 mt-2">
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
+            <a href="https://github.com/unsw-cse-comp99-3900/capstone-project-2024-t3-9900f18atransformers" target="_blank" rel="noopener noreferrer" className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <FaGithub />
-            </span>
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
+            </a>
+            <a href="https://www.linkedin.com/in/tristan-li-862883245/" target="_blank" rel="noopener noreferrer" className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <FaLinkedin />
-            </span>
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
-              <SiYoutubemusic />
-            </span>
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
-              <BsFacebook />
-            </span>
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
-              <FiInstagram />
-            </span>
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
-              <AiFillTwitterCircle />
-            </span>
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
+            </a>
+            <a href="mailto:tristanlyk@gmail.com" className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <FiMail />
-            </span>
+            </a>
           </div>
         </div>
         <div className="flex h-14">
@@ -68,8 +56,8 @@ const Left = () => {
               Download CV <BsCloudLightningFill />
             </button>
           </a>
-          <button className="w-1/2 border-t-[1px] border-t-zinc-800 text-sm tracking-wide uppercase flex justify-center items-center gap-2 hover:text-designColor duration-300">
-            Contact me <FiSend />
+          <button onClick={() => window.dispatchEvent(new Event("openContact"))} className="w-1/2 border-t-[1px] border-t-zinc-800 text-sm tracking-wide uppercase flex justify-center items-center gap-2 hover:text-designColor duration-300">
+            Reach me 
           </button>
         </div>
       </div>

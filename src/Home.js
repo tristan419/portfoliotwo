@@ -4,7 +4,6 @@ import { FaUser, FaEnvelope } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import { MdWork, MdOutlineClose } from "react-icons/md";
 import { SiGooglechat } from "react-icons/si";
-import { BsTelephonePlusFill } from "react-icons/bs";
 import Left from "./components/home/Left";
 import About from "./components/about/About";
 import Resume from "./components/resume/Resume";
@@ -28,6 +27,24 @@ const Home = () => {
         setSidenav(false);
       }
     });
+  }, []);
+
+  // Listen for a global event to open the Contact section (no routing / no hash)
+  useEffect(() => {
+    const openContact = () => {
+      setAbout(false);
+      setResume(false);
+      setProjects(false);
+      setBlog(false);
+      setContact(true);
+      // For small screens where sections are stacked, scroll the contact section into view
+      setTimeout(() => {
+        const el = document.getElementById("contact");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 0);
+    };
+    window.addEventListener("openContact", openContact);
+    return () => window.removeEventListener("openContact", openContact);
   }, []);
   return (
     <div className="w-full lgl:w-[85%] h-full lgl:h-[85%] bg-transparent text-white z-50 flex items-start justify-between p-4 lgl:p-0">
@@ -170,12 +187,6 @@ const Home = () => {
             <FaEnvelope />
             <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
               Contact
-            </span>
-          </span>
-          <span className="w-full h-6 text-textColor text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group">
-            <BsTelephonePlusFill />
-            <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Call
             </span>
           </span>
         </div>

@@ -27,11 +27,6 @@ const Sidenav = () => {
         </li>
         <li className="sidenavLi">Designer Conference at Florida, USA 2020</li>
       </ul>
-      <SidenavTitle title="R" subTitle="each Me" />
-      <ul>
-        <li className="sidenavLi">+968 24769821</li>
-        <li className="sidenavLi">noor.jsdivs@gmail.com</li>
-      </ul>
     </div>
   );
 }

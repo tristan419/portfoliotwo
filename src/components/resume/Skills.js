@@ -11,36 +11,36 @@ const Skills = () => {
     <div className="w-full grid grid-cols-9 gap-10 lgl:gap-0 px-6">
       {/* =============== Design and Languages Start here =================== */}
       <div className="col-span-9 md:col-span-4">
-        <ResumeTitle title="Design" icon={<SiArtstation />} />
-        {/* web Design */}
+        <ResumeTitle title="Frontend" icon={<SiArtstation />} />
+        {/* React */}
         <div className="py-4">
           <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">Web Development</p>
-            <span className="w-full bg-zinc-600 h-1 inline-flex relative">
-              <span className="w-[95%] h-full absolute top-0 left-0 bg-designColor"></span>
-            </span>
-          </div>
-          {/* web Development */}
-          <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">Web Design</p>
+            <p className="text-base text-textColor -mb-1.5">React.js</p>
             <span className="w-full bg-zinc-600 h-1 inline-flex relative">
               <span className="w-[90%] h-full absolute top-0 left-0 bg-designColor"></span>
             </span>
           </div>
-          {/* Mobile Application */}
+          {/* Next.js */}
           <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">
-              Mobile Application
-            </p>
+            <p className="text-base text-textColor -mb-1.5">Next.js</p>
             <span className="w-full bg-zinc-600 h-1 inline-flex relative">
               <span className="w-[85%] h-full absolute top-0 left-0 bg-designColor"></span>
             </span>
           </div>
-          {/* UI Design */}
+          {/* HTML/CSS */}
           <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">UI Design</p>
+            <p className="text-base text-textColor -mb-1.5">
+              HTML/CSS
+            </p>
             <span className="w-full bg-zinc-600 h-1 inline-flex relative">
-              <span className="w-[80%] h-full absolute top-0 left-0 bg-designColor"></span>
+              <span className="w-[95%] h-full absolute top-0 left-0 bg-designColor"></span>
+            </span>
+          </div>
+          {/* TailwindCSS */}
+          <div className="py-3 border-b-[1px] border-zinc-800">
+            <p className="text-base text-textColor -mb-1.5">TailwindCSS</p>
+            <span className="w-full bg-zinc-600 h-1 inline-flex relative">
+              <span className="w-[85%] h-full absolute top-0 left-0 bg-designColor"></span>
             </span>
           </div>
         </div>
@@ -55,28 +55,28 @@ const Skills = () => {
           <div className="py-3 border-b-[1px] border-zinc-800">
             <p className="text-base text-textColor -mb-1.5">English</p>
             <span className="w-full bg-zinc-600 h-1 inline-flex relative">
+              <span className="w-[95%] h-full absolute top-0 left-0 bg-designColor"></span>
+            </span>
+          </div>
+          {/* Chinese */}
+          <div className="py-3 border-b-[1px] border-zinc-800">
+            <p className="text-base text-textColor -mb-1.5">Chinese</p>
+            <span className="w-full bg-zinc-600 h-1 inline-flex relative">
               <span className="w-[100%] h-full absolute top-0 left-0 bg-designColor"></span>
             </span>
           </div>
-          {/* Hindi */}
+          {/* JavaScript */}
           <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">Hindi</p>
+            <p className="text-base text-textColor -mb-1.5">JavaScript</p>
             <span className="w-full bg-zinc-600 h-1 inline-flex relative">
               <span className="w-[90%] h-full absolute top-0 left-0 bg-designColor"></span>
             </span>
           </div>
-          {/* Arabic*/}
+          {/* Python */}
           <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">Arabic</p>
+            <p className="text-base text-textColor -mb-1.5">Python</p>
             <span className="w-full bg-zinc-600 h-1 inline-flex relative">
-              <span className="w-[70%] h-full absolute top-0 left-0 bg-designColor"></span>
-            </span>
-          </div>
-          {/* French */}
-          <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">French</p>
-            <span className="w-full bg-zinc-600 h-1 inline-flex relative">
-              <span className="w-[60%] h-full absolute top-0 left-0 bg-designColor"></span>
+              <span className="w-[75%] h-full absolute top-0 left-0 bg-designColor"></span>
             </span>
           </div>
         </div>
@@ -86,34 +86,34 @@ const Skills = () => {
       {/* =============== Coading and Knowledge End here ==================== */}
 
       <div className="col-span-9 md:col-span-4">
-        <ResumeTitle title="Coding" icon={<BiCodeAlt />} />
-        {/* web Design */}
+        <ResumeTitle title="Backend" icon={<BiCodeAlt />} />
+        {/* Node.js */}
         <div className="py-4">
           <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">JavaScript</p>
-            <span className="w-full bg-zinc-600 h-1 inline-flex relative">
-              <span className="w-[95%] h-full absolute top-0 left-0 bg-designColor"></span>
-            </span>
-          </div>
-          {/* web Development */}
-          <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">Nodejs</p>
+            <p className="text-base text-textColor -mb-1.5">Node.js</p>
             <span className="w-full bg-zinc-600 h-1 inline-flex relative">
               <span className="w-[90%] h-full absolute top-0 left-0 bg-designColor"></span>
             </span>
           </div>
-          {/* Mobile Application */}
+          {/* Express.js */}
           <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">Reactjs</p>
+            <p className="text-base text-textColor -mb-1.5">Express.js</p>
             <span className="w-full bg-zinc-600 h-1 inline-flex relative">
               <span className="w-[85%] h-full absolute top-0 left-0 bg-designColor"></span>
             </span>
           </div>
-          {/* UI Design */}
+          {/* MongoDB */}
           <div className="py-3 border-b-[1px] border-zinc-800">
-            <p className="text-base text-textColor -mb-1.5">TypeScript</p>
+            <p className="text-base text-textColor -mb-1.5">MongoDB</p>
             <span className="w-full bg-zinc-600 h-1 inline-flex relative">
               <span className="w-[80%] h-full absolute top-0 left-0 bg-designColor"></span>
+            </span>
+          </div>
+          {/* PostgreSQL */}
+          <div className="py-3 border-b-[1px] border-zinc-800">
+            <p className="text-base text-textColor -mb-1.5">PostgreSQL</p>
+            <span className="w-full bg-zinc-600 h-1 inline-flex relative">
+              <span className="w-[75%] h-full absolute top-0 left-0 bg-designColor"></span>
             </span>
           </div>
         </div>
@@ -129,49 +129,49 @@ const Skills = () => {
             <span className="text-designColor text-lg">
               <GiCheckMark />
             </span>
-            Website hosting
+            RESTful API Design
           </li>
           <li className="flex items-center gap-4 text-textColor">
             <span className="text-designColor text-lg">
               <GiCheckMark />
             </span>
-            iOS and android apps
+            Git Version Control
           </li>
           <li className="flex items-center gap-4 text-textColor">
             <span className="text-designColor text-lg">
               <GiCheckMark />
             </span>
-            Create logo design
+            Responsive Web Design
           </li>
           <li className="flex items-center gap-4 text-textColor">
             <span className="text-designColor text-lg">
               <GiCheckMark />
             </span>
-            Design for print
+            Database Design
           </li>
           <li className="flex items-center gap-4 text-textColor">
             <span className="text-designColor text-lg">
               <GiCheckMark />
             </span>
-            Modern and mobile-ready
+            Cloud Deployment
           </li>
           <li className="flex items-center gap-4 text-textColor">
             <span className="text-designColor text-lg">
               <GiCheckMark />
             </span>
-            Advertising services include
+            Testing & Debugging
           </li>
           <li className="flex items-center gap-4 text-textColor">
             <span className="text-designColor text-lg">
               <GiCheckMark />
             </span>
-            Graphics and animations
+            Agile Development
           </li>
           <li className="flex items-center gap-4 text-textColor">
             <span className="text-designColor text-lg">
               <GiCheckMark />
             </span>
-            Search engine marketing
+            Full Stack Architecture
           </li>
         </ul>
       </div>

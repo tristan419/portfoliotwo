@@ -1,4 +1,5 @@
 import bannerImg from "./bannerImg.png";
+import avatarImg from "./avatar.png";
 import workImgOne from "./work/workImgOne.jpg"
 import workImgTwo from "./work/workImgTwo.jpg"
 import workImgThree from "./work/workImgThree.jpg"
@@ -13,6 +14,7 @@ import blogImgThree from "./blog/blogImgThree.jpg"
 
 export { 
     bannerImg,
+    avatarImg,
     workImgOne,
     workImgTwo,
     workImgThree,
