@@ -11,6 +11,7 @@ import Sidenav from "./components/home/sidenav/Sidenav";
 const Home = () => {
   // 不再用本地状态，改用路由
   const [sidenav, setSidenav] = useState(false);
+  const [showSwipeHint, setShowSwipeHint] = useState(false);
   const ref = useRef();
   const location = useLocation();
   const navigate = useNavigate();
@@ -36,8 +37,75 @@ const Home = () => {
     return () => window.removeEventListener("openContact", openContact);
   }, [navigate]);
   const active = (path) => location.pathname.startsWith(path);
+  // 移动端横向滑动切换 section（视觉仍为单列纵向，用户可左右 swipe 快速跳）
+  useEffect(() => {
+  const isTouch = (('ontouchstart' in window) || navigator.maxTouchPoints > 0) && window.innerWidth < 1024;
+  if (!isTouch) return; // 桌面端禁用
+  const el = document.body; // 全局监听（仅移动端）
+    let startX = 0, startY = 0, tracking = false, prevented = false;
+    const THRESHOLD = 60; // 水平触发距离
+    const RESTRAIN = 50; // 允许的垂直偏移
+    const onTouchStart = (e) => {
+      if (e.touches.length !== 1) return;
+      const t = e.touches[0];
+      startX = t.clientX; startY = t.clientY; tracking = true; prevented = false;
+    };
+    const vibrate = (ms=10)=>{ if (navigator.vibrate) navigator.vibrate(ms); };
+    const order = ['/about','/resume','/projects','/blog','/contact'];
+    const gotoRelative = (dir) => {
+      const idx = order.findIndex(p=> location.pathname.startsWith(p));
+      if (idx === -1) return;
+      const nextIdx = idx + dir;
+      if (nextIdx < 0 || nextIdx >= order.length) return;
+      navigate(order[nextIdx]);
+      vibrate(15);
+    };
+    const onTouchMove = (e) => {
+      if (!tracking) return;
+      const t = e.touches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      if (Math.abs(dy) > RESTRAIN) { tracking = false; return; }
+      if (Math.abs(dx) > THRESHOLD) {
+        // 阻止后续默认（避免意外滚动横向回弹）
+        if (!prevented) { e.preventDefault(); prevented = true; }
+        gotoRelative(dx < 0 ? 1 : -1); // 左滑 -> 下一个，右滑 -> 上一个
+        tracking = false;
+      }
+    };
+    const onTouchEnd = () => { tracking = false; };
+    el.addEventListener('touchstart', onTouchStart, { passive:true });
+    el.addEventListener('touchmove', onTouchMove, { passive:false });
+    el.addEventListener('touchend', onTouchEnd, { passive:true });
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
+      el.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [location.pathname, navigate]);
+
+  // 一次性展示“Swipe”提示（移动端首次进入）
+  useEffect(() => {
+    const isTouch = (('ontouchstart' in window) || navigator.maxTouchPoints > 0) && window.innerWidth < 1024;
+    if (!isTouch) return;
+    if (!localStorage.getItem('swipeHintShown')) {
+      setShowSwipeHint(true);
+      localStorage.setItem('swipeHintShown', '1');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!showSwipeHint) return;
+    const hideTimer = setTimeout(() => setShowSwipeHint(false), 2000);
+    return () => clearTimeout(hideTimer);
+  }, [showSwipeHint]);
   return (
   <div className="w-full max-w-[2200px] mx-auto min-h-screen bg-transparent text-white z-10 flex items-start gap-4 p-4 lgl:p-4">
+      {showSwipeHint && (
+        <div className="fixed top-2 left-1/2 -translate-x-1/2 z-[500] px-3 py-1 rounded-full bg-black/70 backdrop-blur text-[11px] font-medium tracking-wide text-gray-200 shadow-lg transition-opacity duration-500">
+          Swipe ← → to switch
+        </div>
+      )}
       {/* ================= Left Icons列（桌面） ======================== */}
   <div className="hidden lgl:flex flex-col gap-4 sticky top-4 self-start z-[150]">
         <div className="w-16 h-96 bg-transparent flex flex-col gap-4">
