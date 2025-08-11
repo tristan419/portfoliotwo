@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { BsCloudLightningFill } from "react-icons/bs";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -16,11 +15,6 @@ const Left = () => {
     delaySpeed: 2000,
   });
   const [collapsed, setCollapsed] = useState(true);
-  const location = useLocation();
-  // 移动端路由变化后自动折叠（桌面端保持展开逻辑不变）
-  useEffect(() => {
-    if (window.innerWidth < 1024) setCollapsed(true);
-  }, [location.pathname]);
   const toggle = () => setCollapsed((c) => !c);
   return (
     <div className="w-full bg-bodyColor rounded-2xl shadow-testShwdow overflow-hidden flex flex-col">
@@ -33,7 +27,7 @@ const Left = () => {
         />
       </div>
       <div className="flex flex-col flex-1">
-  <div className="flex flex-col items-center gap-2 py-4 lgl:py-8 px-4 text-center">
+        <div className="flex flex-col items-center gap-2 py-5 lgl:py-8 px-4 text-center">
           <h1 className="text-textColor text-2xl sm:text-3xl lgl:text-4xl font-semibold leading-tight">Yuankai Li</h1>
           <p className="text-sm sm:text-base text-designColor tracking-wide min-h-[1.5em]">
             {text}

@@ -4,51 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html, body, #root {
-    @apply bg-black text-textColor;
-    min-height: 100%;
-  scroll-behavior: smooth; /* G: 平滑滚动 */
-  }
-.glow-scale { /* E: 光斑响应缩放示例，用于背景光斑容器 */
-  --glow-scale: 1;
-}
-@media (max-width: 640px) {
-  .glow-scale { --glow-scale: .75; }
-}
-@media (max-width: 420px) {
-  .glow-scale { --glow-scale: .6; }
-}
-
-/* F: Section 统一垂直节奏工具类 */
-/* 节奏类：section-block 已定义，不需要多余空规则 */
-.section-block { padding-top:3rem; padding-bottom:3rem; }
-@media (min-width:640px){ .section-block { padding-top:3.5rem; padding-bottom:3.5rem; } }
-@media (min-width:1024px){ .section-block { padding-top:4rem; padding-bottom:4rem; } }
-  html, body {
-    overscroll-behavior: none; /* 阻止拉伸时露出默认白底 */
-    -webkit-font-smoothing: antialiased;
-  }
-  body {
-    margin: 0; /* 确保没有默认外边距导致边缘闪白 */
-    overflow-x: hidden; /* 防止横向轻微位移出现白条 */
-  touch-action: pan-y; /* 仅允许纵向原生滚动，阻止横向手势 & 双指缩放惯性 */
-  overscroll-behavior-x: none; /* 禁止横向越界弹性 */
-  }
-  /* 限制全局内容最大宽度并居中：实际组件自己用容器类，这里提供辅助类 */
-}
-
-/* 全局容器类：左右留出背景（黑+光斑），内容不贴边 */
-.app-shell-max { /* 适用于移动端主纵向区域 */
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* 顶部自动显隐导航的轻跳动动画 */
-@keyframes navPulseBounce { 0%,70% { transform: translateY(0); } 80% { transform: translateY(-4px);} 90% { transform: translateY(0);} 100% { transform: translateY(0);} }
-.nav-attention-bounce { animation: navPulseBounce 2s ease-in-out infinite; }
-
 @layer components {
   .borderTop {
     @apply border-t-[1px] border-t-zinc-800;
@@ -76,4 +31,56 @@
   .sidenavLi{
     @apply text-textColor border-b-[1px] border-b-zinc-500 py-4 text-base hover:text-designColor duration-300
   }
+  /* 统一 section 横向内边距 */
+  .section-x { @apply px-3 sm:px-4 md:px-6 lgl:px-8; }
+}
+
+/* ===== react-pdf-viewer overrides (隐藏不需要的按钮，可按需调整) ===== */
+/* 隐藏打开本地文件与打印（如果默认布局包含） */
+.rpv-toolbar__item[data-testid="open__button"],
+.rpv-toolbar__item[data-testid="print__menu"],
+.rpv-toolbar__item[data-testid="print__button"] {
+  display: none !important;
+}
+/* 让默认布局背景半透明更贴合站点风格 */
+/* 可调节透明度变量 */
+:root {
+  --pdf-toolbar-bg: rgba(0,0,0,0.55); /* 工具栏背景：调节最后一个数字(透明度) */
+  --pdf-panel-bg: rgba(15,15,15,0.85); /* 侧栏/下方面板背景 */
+  --pdf-page-bg: #0d0d0f; /* 页面容器背景（页之间的空白） */
+}
+
+/* 全局：防止 iOS 橡皮筋露出白底、提供稳定滚动槽 */
+html, body {
+  background:#000; /* 避免内部滚动容器回弹露出白色 */
+  color:#fff;
+  overscroll-behavior-y: none; /* 阻断顶/底回弹可选 */
+  -webkit-text-size-adjust:100%;
+}
+body { 
+  scrollbar-gutter: stable both-edges; /* 避免出现/消失导致的布局抖动 (支持浏览器自动回退) */
+}
+
+/* 统一 section 横向 gutter 工具类 */
+
+.rpv-default-layout__toolbar {
+  background: var(--pdf-toolbar-bg) !important;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #3f3f46;
+}
+/* 缩略图 / 目录 / 搜索面板背景加深 */
+.rpv-default-layout__sidebar,
+.rpv-default-layout__sidebar-content,
+.rpv-default-layout__sidebar-toolbar,
+.rpv-core__popover-body {
+  background: var(--pdf-panel-bg) !important;
+  backdrop-filter: blur(8px);
+}
+/* 页面外围背景（滚动区域） */
+.rpv-default-layout__main .rpv-core__viewer {
+  background: var(--pdf-page-bg) !important;
+}
+/* 去掉页面容器默认内边阴影过深问题可在这里继续调 */
+.rpv-core__inner-page {
+  box-shadow: 0 0 0 1px #27272a, 0 4px 12px rgba(0,0,0,0.4);
 }

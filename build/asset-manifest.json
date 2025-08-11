@@ -1,8 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.0352413c.css",
-    "main.js": "/static/js/main.d9d6e95b.js",
-    "static/media/Noor_Mohammad_resume.pdf": "/static/media/Noor_Mohammad_resume.9b31b3dcf2d5307bd8f0.pdf",
+    "main.css": "/static/css/main.17a94cc9.css",
+    "main.js": "/static/js/main.05e88946.js",
+    "static/media/Yuankai_Li_resume.pdf": "/static/media/Yuankai_Li_resume.c9d1889e705b9a2172fa.pdf",
+    "static/media/avatar.png": "/static/media/avatar.be01cb0e9dadc94e747b.png",
+    "static/media/快速搭建一个基于react框架的agent.pdf": "/static/media/快速搭建一个基于react框架的agent.cd3a42e3f09af0d1da6a.pdf",
     "static/media/bannerImg.png": "/static/media/bannerImg.e225c5dbdb7475319764.png",
     "static/media/workImgEight.jpg": "/static/media/workImgEight.863efcb32ba563410bd6.jpg",
     "static/media/workImgSeven.jpg": "/static/media/workImgSeven.b607849747fc53f9a1c1.jpg",
@@ -16,11 +18,11 @@
     "static/media/blogImgTwo.jpg": "/static/media/blogImgTwo.6aed37cec2695c32850c.jpg",
     "static/media/workImgOne.jpg": "/static/media/workImgOne.294921da5954189699c7.jpg",
     "index.html": "/index.html",
-    "main.0352413c.css.map": "/static/css/main.0352413c.css.map",
-    "main.d9d6e95b.js.map": "/static/js/main.d9d6e95b.js.map"
+    "main.17a94cc9.css.map": "/static/css/main.17a94cc9.css.map",
+    "main.05e88946.js.map": "/static/js/main.05e88946.js.map"
   },
   "entrypoints": [
-    "static/css/main.0352413c.css",
-    "static/js/main.d9d6e95b.js"
+    "static/css/main.17a94cc9.css",
+    "static/js/main.05e88946.js"
   ]
 }

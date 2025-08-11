@@ -6,7 +6,7 @@ import { SiOpenai } from "react-icons/si";
 
 const MyServices = () => {
   return (
-  <div className="grid grid-cols-1 [@media(max-width:380px)]:grid-cols-2 md:grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2">
       <ServicesCard
         icons={<TbBrandNextjs />}
         title="Next.js Websites & Dashboards"
@@ -14,7 +14,7 @@ const MyServices = () => {
       />
       <ServicesCard
         icons={<VscBeaker />}
-        title="Automated Testing Using TestSprite"
+        title="Automated Testing TestSprite"
         subTitle="AI-generated & cloud-run tests with reports; Playwright covers critical E2E paths and integrates with CI."
       />
       <ServicesCard
