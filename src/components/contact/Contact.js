@@ -67,8 +67,8 @@ const Contact = () => {
   return (
     <div id="contact" className="w-full">
       <Title title="Reach" subTitle="Me" />
-      <div className="p-6 w-full flex flex-col md:flex-row justify-between gap-4 md:gap-10 lgl:gap-20">
-        <div className="w-full lgl:w-1/2">
+      <div className="px-4 md:px-6 pt-4 md:pt-6 w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 lgl:gap-16">
+        <div className="w-full">
           <p className="flex gap-6 justify-between w-full text-lg text-[#ccc] py-4 border-b-[1px] border-b-zinc-800">
             <span className="bg-designColor text-gray-700 text-sm font-titleFont font-medium px-2 rounded-md flex items-center justify-center">
               Address:
@@ -82,7 +82,7 @@ const Contact = () => {
             +61 0490842614
           </p>
         </div>
-        <div className="w-full lgl:w-1/2">
+  <div className="w-full">
           <p className="flex justify-between lgl:gap-6 w-full text-lg text-[#ccc] py-4 border-b-[1px] border-b-zinc-800">
             <span className="bg-designColor text-gray-700 text-sm font-titleFont font-medium px-2 rounded-md flex items-center justify-center">
               Email:
@@ -98,7 +98,7 @@ const Contact = () => {
         </div>
       </div>
       <div className="w-full mt-10">
-        <Title title="Send" subTitle="Messages" />
+    <Title title="Send" subTitle="Messages" />
         {seuccessMsg ? (
           <p className="text-center text-base font-titleFont p-20 text-designColor">
             {seuccessMsg}
@@ -108,7 +108,7 @@ const Contact = () => {
             id="form"
             action="https://getform.io/f/e18ee560-5133-4cfe-9a48-eddb6f012a9f"
             method="POST"
-            className="p-6 flex flex-col gap-6"
+      className="px-4 md:px-6 py-6 flex flex-col gap-5"
           >
             <div className="w-full flex flex-col lgl:flex-row gap-4 lgl:gap-10 justify-between">
               <input

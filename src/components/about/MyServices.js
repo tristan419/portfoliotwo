@@ -6,7 +6,7 @@ import { SiOpenai } from "react-icons/si";
 
 const MyServices = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2">
+  <div className="grid grid-cols-1 [@media(max-width:380px)]:grid-cols-2 md:grid-cols-2">
       <ServicesCard
         icons={<TbBrandNextjs />}
         title="Next.js Websites & Dashboards"

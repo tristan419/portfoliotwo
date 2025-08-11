@@ -16,8 +16,8 @@ const Projects = () => {
   return (
     <div>
       <Title title="Recent" subTitle="Projects" />
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 lgl:gap-10">
-        <div className="px-6">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 lgl:gap-10">
+        <div className="flex flex-col gap-5 md:gap-6 md:order-1">
           <ProjectsCard
             title="Blog Website"
             category="Website"
@@ -38,8 +38,8 @@ const Projects = () => {
             category="Shopping"
             image={workImgFive}
           />
-        </div>
-        <div className="px-6">
+  </div>
+  <div className="flex flex-col gap-5 md:gap-6 md:order-2">
           <ProjectsCard
             title="Responsive website"
             category="E-commerce"
