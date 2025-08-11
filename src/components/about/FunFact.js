@@ -1,19 +1,22 @@
-import React from "react";
-import { BsTrophyFill } from "react-icons/bs";
-import { SiAntdesign } from "react-icons/si";
-import { BiCodeAlt } from "react-icons/bi";
-import { IoLogoYoutube } from "react-icons/io";
+import { FiCpu } from "react-icons/fi";
+import { VscBeaker } from "react-icons/vsc";
+import { FiUsers } from "react-icons/fi";
+import { SiOpenai } from "react-icons/si";
 import FunFactCard from "./FunFactCard";
 
-const FunFact = () => {
-  return (
-    <div className="px-0 grid grid-cols-2 md:grid-cols-4 pb-10">
-      <FunFactCard icon={<BsTrophyFill />} des="10 Awards Won" />
-      <FunFactCard icon={<SiAntdesign />} des="20 Finished Projects" />
-      <FunFactCard icon={<BiCodeAlt />} des="100 hours of coding" />
-      <FunFactCard icon={<IoLogoYoutube />} des="1.5k Subscription" />
-    </div>
-  );
-};
+const facts = [
+  { icon: <FiUsers />, text: "Organised Continental Group event" },
+  { icon: <SiOpenai />, text: "AI pre-labels accelerated annotation" },
+  { icon: <VscBeaker />, text: "Auto tests with TestSprite + Playwright" },
+  { icon: <FiCpu />, text: "Blog: multi-agent collaboration" },
+];
+
+const FunFact = () => (
+  <div className="px-0 grid grid-cols-2 md:grid-cols-4 pb-10">
+    {facts.map((f, i) => (
+      <FunFactCard key={i} icon={f.icon} des={f.text} />
+    ))}
+  </div>
+);
 
 export default FunFact;

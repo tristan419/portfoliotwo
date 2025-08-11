@@ -1,32 +1,31 @@
-import React from "react";
-import { FaAppStoreIos } from "react-icons/fa";
-import { AiTwotoneAppstore } from "react-icons/ai";
-import { SiAntdesign } from "react-icons/si";
-import { BiCodeAlt } from "react-icons/bi";
 import ServicesCard from "./ServicesCard";
+import { TbBrandNextjs } from "react-icons/tb";
+import { FiCamera } from "react-icons/fi";
+import { VscBeaker } from "react-icons/vsc";
+import { SiOpenai } from "react-icons/si";
 
 const MyServices = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2">
       <ServicesCard
-        icons={<BiCodeAlt />}
-        title="Web Development"
-        subTitle="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, provident. Accusamus at dolorem expedita dicta."
+        icons={<TbBrandNextjs />}
+        title="Next.js Websites & Dashboards"
+        subTitle="Production-ready Next.js (TS + Tailwind), SSR/SSG, clean routing & layouts, deployed on Vercel."
       />
       <ServicesCard
-        icons={<SiAntdesign />}
-        title="Web Design"
-        subTitle="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, provident. Accusamus at dolorem expedita dicta."
+        icons={<VscBeaker />}
+        title="Automated Testing Using TestSprite"
+        subTitle="AI-generated & cloud-run tests with reports; Playwright covers critical E2E paths and integrates with CI."
       />
       <ServicesCard
-        icons={<AiTwotoneAppstore />}
-        title="Mobile Application"
-        subTitle="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, provident. Accusamus at dolorem expedita dicta."
+        icons={<SiOpenai />}
+        title="AI-Assisted Annotation "
+        subTitle="Transformer-powered prelabels with human-in-the-loop review for sentiment, image labels, and bounding boxes."
       />
       <ServicesCard
-        icons={<FaAppStoreIos />}
-        title="SEO"
-        subTitle="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, provident. Accusamus at dolorem expedita dicta."
+        icons={<FiCamera />}
+        title="Visual Content for Web"
+        subTitle="Photography + Photoshop/Premiere edits, plus AIGC banners & thumbnails aligned to brand."
       />
     </div>
   );

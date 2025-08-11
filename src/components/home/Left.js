@@ -1,23 +1,21 @@
 import React from "react";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
-import { BsCloudLightningFill, BsFacebook } from "react-icons/bs";
+import { BsCloudLightningFill } from "react-icons/bs";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { AiFillTwitterCircle } from "react-icons/ai";
-import { SiYoutubemusic } from "react-icons/si";
-import { FiInstagram, FiMail, FiSend } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
 import CV from "../../assets/Yuankai_Li_resume.pdf";
 import { avatarImg } from "../../assets/index";
 
 const Left = () => {
   const [text] = useTypewriter({
-    words: ["Web Developer", "Full Stack Developer", "UI Designer"],
+    words: ["Web Developer", "Full Stack Developer", "AI Infrastructure"],
     loop: true,
     typeSpeed: 30,
     deleteSpeed: 20,
     delaySpeed: 2000,
   });
   return (
-    <div className="w-full lgl:w-5/12 h-full bg-bodyColor rounded-2xl shadow-testShwdow z-10">
+  <div className="w-full h-full bg-bodyColor rounded-2xl shadow-testShwdow">
       <div className="w-full h-3/5">
         <img
           className="w-full h-full object-cover rounded-2xl"
@@ -26,7 +24,7 @@ const Left = () => {
           alt="avatar of Yuankai Li"
         />
       </div>
-      <div className="w-full h-2/5 flex flex-col justify-between border-t-0 rounded-bl-xl rounded-br-xl">
+      <div className="w-full h-2/5 flex flex-col justify-between border-t-0 rounded-bl-xl rounded-br-xl z-10">
         <div className="flex flex-col items-center gap-2 py-10">
           <h1 className="text-textColor text-4xl font-semibold">Yuankai Li</h1>
           <p className="text-base text-designColor tracking-wide">

@@ -4,6 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html, body, #root {
+    @apply bg-black text-textColor;
+    min-height: 100%;
+  }
+  html, body {
+    overscroll-behavior: none; /* 阻止拉伸时露出默认白底 */
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    margin: 0; /* 确保没有默认外边距导致边缘闪白 */
+    overflow-x: hidden; /* 防止横向轻微位移出现白条 */
+  }
+}
+
 @layer components {
   .borderTop {
     @apply border-t-[1px] border-t-zinc-800;

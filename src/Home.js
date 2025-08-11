@@ -4,52 +4,43 @@ import { FaUser, FaEnvelope } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import { MdWork, MdOutlineClose } from "react-icons/md";
 import { SiGooglechat } from "react-icons/si";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Left from "./components/home/Left";
-import About from "./components/about/About";
-import Resume from "./components/resume/Resume";
-import Projects from "./components/projects/Projects";
-import Blog from "./components/blog/Blog";
-import Contact from "./components/contact/Contact";
 import Sidenav from "./components/home/sidenav/Sidenav";
 
 const Home = () => {
-  const [about, setAbout] = useState(true);
-  const [resume, setResume] = useState(false);
-  const [projects, setProjects] = useState(false);
-  const [blog, setBlog] = useState(false);
-  const [contact, setContact] = useState(false);
+  // 不再用本地状态，改用路由
   const [sidenav, setSidenav] = useState(false);
   const ref = useRef();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    document.body.addEventListener("click", (e) => {
-      if (e.target.contains(ref.current)) {
-        setSidenav(false);
-      }
-    });
+    const handler = (e) => {
+      if (e.target.contains(ref.current)) setSidenav(false);
+    };
+    document.body.addEventListener("click", handler);
+    return () => document.body.removeEventListener("click", handler);
   }, []);
 
   // Listen for a global event to open the Contact section (no routing / no hash)
   useEffect(() => {
     const openContact = () => {
-      setAbout(false);
-      setResume(false);
-      setProjects(false);
-      setBlog(false);
-      setContact(true);
-      // For small screens where sections are stacked, scroll the contact section into view
+      navigate('/contact');
       setTimeout(() => {
-        const el = document.getElementById("contact");
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 0);
+        const el = document.getElementById('contact');
+        if (el) el.scrollIntoView({behavior:'smooth'});
+      },0);
     };
     window.addEventListener("openContact", openContact);
     return () => window.removeEventListener("openContact", openContact);
-  }, []);
+  }, [navigate]);
+  const active = (path) => location.pathname.startsWith(path);
   return (
-    <div className="w-full lgl:w-[85%] h-full lgl:h-[85%] bg-transparent text-white z-50 flex items-start justify-between p-4 lgl:p-0">
-      {/* ================= Left Icons End here ======================== */}
-      <div className="w-16 h-96 bg-transparent hidden lgl:flex flex-col gap-4">
+  <div className="w-full max-w-[2200px] mx-auto min-h-screen bg-transparent text-white z-10 flex items-start gap-4 p-4 lgl:p-4">
+      {/* ================= Left Icons列（桌面） ======================== */}
+  <div className="hidden lgl:flex flex-col gap-4 sticky top-4 self-start z-10">
+        <div className="w-16 h-96 bg-transparent flex flex-col gap-4">
         {/* ======= Home Icon start */}
         <div
           onClick={() => setSidenav(true)}
@@ -86,175 +77,59 @@ const Home = () => {
           </div>
         )}
         {/* ============= Sidenav End here =============== */}
-        {/* ======= Other Icons Start */}
-        <div className="w-full h-80 bg-bodyColor rounded-3xl flex flex-col items-center justify-between py-6">
+  {/* ======= Other Icons Start */}
+  <div className="w-16 h-80 bg-bodyColor rounded-3xl flex flex-col items-center justify-between py-6 relative z-20 overflow-visible">
           {/* About Icon */}
-          <span
-            onClick={() =>
-              setAbout(true) &
-              setResume(false) &
-              setProjects(false) &
-              setBlog(false) &
-              setContact(false)
-            }
-            className={`${
-              about
-                ? "text-designColor"
-                : "w-full h-6 text-textColor text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group"
-            } w-full h-6 text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group`}
-            // className="w-full h-6 text-textColor text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group"
-          >
+          <NavLink to="/about" className={`w-full h-6 text-xl flex items-center justify-center duration-300 cursor-pointer relative group ${active('/about')? 'text-designColor':'text-textColor hover:text-designColor'}`}>
             <FaUser />
-            <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              About
-            </span>
-          </span>
+            <span className="pointer-events-none text-black font-medium text-xs uppercase bg-designColor px-3 py-[3px] rounded-xl absolute left-full -translate-x-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg z-30 whitespace-nowrap">About</span>
+          </NavLink>
           {/* Resume Icon */}
-          <span
-            onClick={() =>
-              setAbout(false) &
-              setResume(true) &
-              setProjects(false) &
-              setBlog(false) &
-              setContact(false)
-            }
-            className={`${
-              resume
-                ? "text-designColor"
-                : "w-full h-6 text-textColor text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group"
-            } w-full h-6 text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group`}
-          >
+          <NavLink to="/resume" className={`w-full h-6 text-xl flex items-center justify-center duration-300 cursor-pointer relative group ${active('/resume')? 'text-designColor':'text-textColor hover:text-designColor'}`}>
             <IoIosPaper />
-            <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Resume
-            </span>
-          </span>
+            <span className="pointer-events-none text-black font-medium text-xs uppercase bg-designColor px-3 py-[3px] rounded-xl absolute left-full -translate-x-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg z-30 whitespace-nowrap">Resume</span>
+          </NavLink>
           {/* Project Icon */}
-          <span
-            onClick={() =>
-              setAbout(false) &
-              setResume(false) &
-              setProjects(true) &
-              setBlog(false) &
-              setContact(false)
-            }
-            className={`${
-              projects
-                ? "text-designColor"
-                : "w-full h-6 text-textColor text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group"
-            } w-full h-6 text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group`}
-          >
+          <NavLink to="/projects" className={`w-full h-6 text-xl flex items-center justify-center duration-300 cursor-pointer relative group ${active('/projects')? 'text-designColor':'text-textColor hover:text-designColor'}`}>
             <MdWork />
-            <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Projects
-            </span>
-          </span>
+            <span className="pointer-events-none text-black font-medium text-xs uppercase bg-designColor px-3 py-[3px] rounded-xl absolute left-full -translate-x-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg z-30 whitespace-nowrap">Projects</span>
+          </NavLink>
           {/* Blog Icon */}
-          <span
-            onClick={() =>
-              setAbout(false) &
-              setResume(false) &
-              setProjects(false) &
-              setBlog(true) &
-              setContact(false)
-            }
-            className={`${
-              blog
-                ? "text-designColor"
-                : "w-full h-6 text-textColor text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group"
-            } w-full h-6 text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group`}
-          >
+          <NavLink to="/blog" className={`w-full h-6 text-xl flex items-center justify-center duration-300 cursor-pointer relative group ${active('/blog')? 'text-designColor':'text-textColor hover:text-designColor'}`}>
             <SiGooglechat />
-            <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Blog
-            </span>
-          </span>
+            <span className="pointer-events-none text-black font-medium text-xs uppercase bg-designColor px-3 py-[3px] rounded-xl absolute left-full -translate-x-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg z-30 whitespace-nowrap">Blog</span>
+          </NavLink>
           {/* Contact Icon */}
-          <span
-            onClick={() =>
-              setAbout(false) &
-              setResume(false) &
-              setProjects(false) &
-              setBlog(false) &
-              setContact(true)
-            }
-            className={`${
-              contact
-                ? "text-designColor"
-                : "w-full h-6 text-textColor text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group"
-            } w-full h-6 text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group`}
-          >
+          <NavLink to="/contact" className={`w-full h-6 text-xl flex items-center justify-center duration-300 cursor-pointer relative group ${active('/contact')? 'text-designColor':'text-textColor hover:text-designColor'}`}>
             <FaEnvelope />
-            <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Contact
-            </span>
-          </span>
+            <span className="pointer-events-none text-black font-medium text-xs uppercase bg-designColor px-3 py-[3px] rounded-xl absolute left-full -translate-x-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg z-30 whitespace-nowrap">Contact</span>
+          </NavLink>
         </div>
         {/* ======= Other Icons End */}
+    {/* ======= 固定个人卡片占位（与左侧个人卡片宽度保持一致） ======= */}
+  <div className="mt-4 w-[clamp(400px,40vw,840px)]" />
+        </div>
       </div>
-      {/* ================= Left Icons Start here ====================== */}
-      <div className="w-full lgl:w-[94%] h-full flex flex-col gap-6 lgl:gap-0 lgl:flex-row items-center">
-        {/* ======================== Home Left Start here ============================ */}
+      {/* 左侧个人信息卡片：独立 sticky，与图标列并列 */}
+  <div className="hidden lgl:block sticky top-4 w-[clamp(400px,40vw,840px)] self-start">
         <Left />
-        {/* ======================== Home Left End here ============================== */}
-        <div className="w-full lgl:w-8/12 h-[95%] bg-bodyColor rounded-2xl flex justify-center items-center">
-          {/* ======================== Smaller device content Start ======================== */}
-          <div className="w-full h-full lgl:hidden bg-transparent rounded-2xl flex flex-col gap-6">
-            <About />
-            <Resume />
-            <Projects />
-            <Blog />
-            <Contact />
-          </div>
-          {/* ======================== Smaller device content End ========================== */}
-          <div className="w-full h-[96%] hidden lgl:flex justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-[#646464]">
-            {about && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <About />
-              </motion.div>
-            )}
-
-            {resume && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Resume />
-              </motion.div>
-            )}
-            {projects && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Projects />
-              </motion.div>
-            )}
-            {blog && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Blog />
-              </motion.div>
-            )}
-            {contact && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Contact />
-              </motion.div>
-            )}
-          </div>
+      </div>
+      {/* 右侧主内容区域 */}
+  <div className="flex-1 min-h-[calc(100vh-2rem)] bg-bodyColor rounded-2xl flex flex-col overflow-hidden">
+        {/* 移动端：上方显示 Left，下面内容滚动 */}
+        <div className="lgl:hidden mb-4">
+          <Left />
+        </div>
+        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-[#646464] px-4 py-6">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            className="w-full"
+          >
+            <Outlet />
+          </motion.div>
         </div>
       </div>
     </div>
