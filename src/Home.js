@@ -120,7 +120,7 @@ const Home = () => {
         <div className="lgl:hidden mb-4">
           <Left />
         </div>
-        <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-[#646464] px-4 py-6">
+  <div className="flex-1 px-4 py-6">
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0 }}

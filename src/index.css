@@ -56,10 +56,18 @@ html, body {
   color:#fff;
   overscroll-behavior-y: none; /* 阻断顶/底回弹可选 */
   -webkit-text-size-adjust:100%;
+  width:100%;
 }
 body { 
   scrollbar-gutter: stable both-edges; /* 避免出现/消失导致的布局抖动 (支持浏览器自动回退) */
+  overflow-x:hidden; /* 强制禁止横向滚动条 */
+  touch-action: pan-y; /* 只允许纵向手势 */
 }
+/* 任意组件误设宽度 > 视口时仍裁掉横向滚动 */
+#root, .app-root, .pdf-view-wrapper { overflow-x:hidden; max-width:100vw; }
+/* PDF 视图内部防止侧栏或页面撑出 */
+.rpv-default-layout__container, .rpv-default-layout__main { max-width:100vw; overflow-x:hidden; }
+.rpv-core__viewer { max-width:100%; }
 
 /* 统一 section 横向 gutter 工具类 */
 
