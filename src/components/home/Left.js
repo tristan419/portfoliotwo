@@ -17,7 +17,7 @@ const Left = () => {
   const [collapsed, setCollapsed] = useState(true);
   const toggle = () => setCollapsed((c) => !c);
   return (
-    <div className="w-full bg-bodyColor rounded-2xl shadow-testShwdow overflow-hidden flex flex-col">
+    <div className="w-full bg-bodyColor rounded-2xl shadow-testShwdow overflow-hidden flex flex-col" data-layer="avatar-card">
       <div className="w-full aspect-square lgl:aspect-auto">
         <img
           className="w-full h-full object-cover"
