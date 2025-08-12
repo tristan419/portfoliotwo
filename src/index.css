@@ -1,83 +1,94 @@
+/* =============== Fonts =============== */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+/* =============== Tailwind =============== */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* =============== Component Utilities =============== */
 @layer components {
-  .borderTop {
-    @apply border-t-[1px] border-t-zinc-800;
-  }
-  .borderBottom {
-    @apply border-b-[1px] border-b-zinc-800;
-  }
-  .borderRight {
-    @apply border-r-[1px] border-r-zinc-800;
-  }
-  .borderLeft {
-    @apply border-l-[1px] border-l-zinc-800;
-  }
-  .borderAll {
-    @apply border-[1px] border-zinc-800;
-  }
-  /* ======================== About Me Start ========================== */
-  .aboutRightLi {
-    @apply text-zinc-400 text-base font-normal flex justify-between items-center border-b-[1px] border-gray-800 py-2;
-  }
-  .aboutRightLiSpan {
-    @apply bg-designColor text-black uppercase px-4 py-[1px] rounded-md;
-  }
-  /* ======================== About Me End ============================ */
-  .sidenavLi{
-    @apply text-textColor border-b-[1px] border-b-zinc-500 py-4 text-base hover:text-designColor duration-300
-  }
-  /* 统一 section 横向内边距 */
+  .borderTop      { @apply border-t-[1px] border-t-zinc-800; }
+  .borderBottom   { @apply border-b-[1px] border-b-zinc-800; }
+  .borderRight    { @apply border-r-[1px] border-r-zinc-800; }
+  .borderLeft     { @apply border-l-[1px] border-l-zinc-800; }
+  .borderAll      { @apply border-[1px] border-zinc-800; }
+
+  /* About Me */
+  .aboutRightLi       { @apply text-zinc-400 text-base font-normal flex justify-between items-center border-b-[1px] border-gray-800 py-2; }
+  .aboutRightLiSpan   { @apply bg-designColor text-black uppercase px-4 py-[1px] rounded-md; }
+
+  /* Sidenav */
+  .sidenavLi { @apply text-textColor border-b-[1px] border-b-zinc-500 py-4 text-base hover:text-designColor duration-300; }
+
+  /* Section horizontal padding */
   .section-x { @apply px-3 sm:px-4 md:px-6 lgl:px-8; }
+
+  /* Optional utility：隐藏滚动条但保留滚动能力 */
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
 }
 
-/* ===== react-pdf-viewer overrides (隐藏不需要的按钮，可按需调整) ===== */
-/* 隐藏打开本地文件与打印（如果默认布局包含） */
+/* =============== react-pdf-viewer overrides =============== */
+/* 隐藏打开本地文件与打印按钮（若默认布局包含） */
 .rpv-toolbar__item[data-testid="open__button"],
 .rpv-toolbar__item[data-testid="print__menu"],
 .rpv-toolbar__item[data-testid="print__button"] {
   display: none !important;
 }
-/* 让默认布局背景半透明更贴合站点风格 */
-/* 可调节透明度变量 */
+
+/* 调色变量 */
 :root {
-  --pdf-toolbar-bg: rgba(0,0,0,0.55); /* 工具栏背景：调节最后一个数字(透明度) */
-  --pdf-panel-bg: rgba(15,15,15,0.85); /* 侧栏/下方面板背景 */
-  --pdf-page-bg: #0d0d0f; /* 页面容器背景（页之间的空白） */
+  --pdf-toolbar-bg: rgba(0,0,0,0.55);   /* 工具栏背景 */
+  --pdf-panel-bg:   rgba(15,15,15,0.85);/* 侧栏/下方面板 */
+  --pdf-page-bg:    #0d0d0f;            /* 页面容器背景（页间空白） */
 }
 
-/* 全局：防止 iOS 橡皮筋露出白底、提供稳定滚动槽 */
-html, body {
-  background:#000; /* 避免内部滚动容器回弹露出白色 */
-  color:#fff;
-  overscroll-behavior-y: none; /* 阻断顶/底回弹可选 */
-  -webkit-text-size-adjust:100%;
-  width:100%;
+/* =============== Global Resets & Scroll Behavior =============== */
+html {
+  height: 100%;
+  background: #000;
+  color: #fff;
+  -webkit-text-size-adjust: 100%;
 }
-body { 
-  scrollbar-gutter: stable both-edges; /* 避免出现/消失导致的布局抖动 (支持浏览器自动回退) */
-  overflow-x:hidden; /* 强制禁止横向滚动条 */
-  touch-action: pan-y; /* 只允许纵向手势 */
+
+body {
+  height: 100%;
+  background: #000;
+  color: #fff;
+  scrollbar-gutter: stable both-edges;
+  margin: 0;
+  padding: 0;
+  /* 桌面端允许正常滚动，只在移动端限制 */
 }
-#root, .app-root, .pdf-view-wrapper { overflow-x:hidden; max-width:100vw; }
-/* 任意组件误设宽度 > 视口时仍裁掉横向滚动 */
-#root, .app-root, .pdf-view-wrapper { overflow-x:hidden; max-width:100vw; }
+
+/* 统一限制横向溢出，确保所有容器高度正确 */
+#root {
+  height: 100vh; /* 确保根容器占满视口 */
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+.app-root,
+.pdf-view-wrapper {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 /* PDF 视图内部防止侧栏或页面撑出 */
-.rpv-default-layout__container, .rpv-default-layout__main { max-width:100vw; overflow-x:hidden; }
-.rpv-core__viewer { max-width:100%; }
+.rpv-default-layout__container,
+.rpv-default-layout__main {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+.rpv-core__viewer { max-width: 100%; }
 
-/* 统一 section 横向 gutter 工具类 */
-
+/* PDF 工具栏与面板 */
 .rpv-default-layout__toolbar {
   background: var(--pdf-toolbar-bg) !important;
   backdrop-filter: blur(8px);
   border-bottom: 1px solid #3f3f46;
 }
-/* 缩略图 / 目录 / 搜索面板背景加深 */
 .rpv-default-layout__sidebar,
 .rpv-default-layout__sidebar-content,
 .rpv-default-layout__sidebar-toolbar,
@@ -85,20 +96,63 @@ body {
   background: var(--pdf-panel-bg) !important;
   backdrop-filter: blur(8px);
 }
-/* 页面外围背景（滚动区域） */
 .rpv-default-layout__main .rpv-core__viewer {
   background: var(--pdf-page-bg) !important;
 }
-/* 去掉页面容器默认内边阴影过深问题可在这里继续调 */
 .rpv-core__inner-page {
   box-shadow: 0 0 0 1px #27272a, 0 4px 12px rgba(0,0,0,0.4);
 }
 
-/* 移动端隐藏滚动条（视觉上“没有滑动条”） */
+/* =============== 移动端滚动优化 =============== */
+/* 完全解决第一下滑动滚动条充满的问题 - 仅限移动端 */
 @media (max-width: 1023px) {
-  body { scrollbar-width: none; }
-  body::-webkit-scrollbar { display: none; width:0; height:0; }
+  html, body {
+    position: fixed; /* 关键：完全固定外层，防止任何滚动 */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  
+  body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+  
+  /* 为主要滚动容器启用完全的滚动控制 */
+  .main-content-scroll {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto; /* 明确启用垂直滚动 */
+    overscroll-behavior-y: contain;
+    scroll-behavior: smooth;
+    height: 100%; /* 确保容器有明确高度 */
+    touch-action: pan-y; /* 只允许垂直平移 */
+  }
+  
+  /* 为内层滚动容器设置边界 */
+  .scroll-container {
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
 }
 
-/* 轻量的“滑动提示”可选类（暂未使用） */
-.swipe-hint-gradient { background:linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0)); pointer-events:none; }
+/* =============== 桌面端确保正常显示 =============== */
+@media (min-width: 1024px) {
+  html, body {
+    overflow: visible; /* 桌面端允许正常滚动 */
+    position: static; /* 确保固定定位元素正常工作 */
+  }
+}
+
+/* 轻量“滑动提示”背景（按需使用 .swipe-hint-gradient） */
+.swipe-hint-gradient {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+  pointer-events: none;
+}
+
+/* =============== Optional: 内部滚动容器的 overscroll 控制 =============== */
+/* 若需要防止某个内部滚动层继续链到外层，为该容器加 .main-scroll 类 */
+.main-scroll { overscroll-behavior-y: contain; }
+
+/* =============== Optional: 手势控制类 =============== */
+/* 如果不想在 JSX 里用属性选择器，也可以给容器加这个类 */
+.touch-pan-y { touch-action: pan-y; }
