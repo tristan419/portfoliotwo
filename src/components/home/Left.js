@@ -34,7 +34,7 @@ const Left = () => {
             <Cursor cursorBlinking={false} cursorStyle="|" />
           </p>
           <div className="flex justify-center gap-3 mt-2">
-            <a href="https://github.com/unsw-cse-comp99-3900/capstone-project-2024-t3-9900f18atransformers" target="_blank" rel="noopener noreferrer" className="hover:text-designColor transition-colors duration-300 cursor-pointer text-lg">
+            <a href="https://github.com/tristan419" target="_blank" rel="noopener noreferrer" className="hover:text-designColor transition-colors duration-300 cursor-pointer text-lg">
               <FaGithub />
             </a>
             <a href="https://www.linkedin.com/in/tristan-li-862883245/" target="_blank" rel="noopener noreferrer" className="hover:text-designColor transition-colors duration-300 cursor-pointer text-lg">
