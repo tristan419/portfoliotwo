@@ -39,9 +39,9 @@ const MobileHeader = () => {
         {/* Social Links */}
         <div className="flex gap-3">
           <a 
-            href="https://github.com/unsw-cse-comp99-3900/capstone-project-2024-t3-9900f18atransformers" 
+            href="https://github.com/tristan419" 
             target="_blank" 
-            rel="noopener noreferrer" 
+            rel="noreferrer" 
             className="hover:text-designColor transition-colors duration-300 cursor-pointer text-base"
           >
             <FaGithub />
@@ -49,7 +49,7 @@ const MobileHeader = () => {
           <a 
             href="https://www.linkedin.com/in/tristan-li-862883245/" 
             target="_blank" 
-            rel="noopener noreferrer" 
+            rel="noreferrer" 
             className="hover:text-designColor transition-colors duration-300 cursor-pointer text-base"
           >
             <FaLinkedin />
