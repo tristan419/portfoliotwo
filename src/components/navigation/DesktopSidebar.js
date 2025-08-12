@@ -14,11 +14,8 @@ const DesktopSidebar = ({
   const sidenavRef = useRef(null);
 
   const handleMenuClick = useCallback((e) => {
-    console.log("Menu clicked!", e);
-    console.log("Current sidenav state:", sidenav);
     setSidenav(true);
-    console.log("Setting sidenav to true");
-  }, [sidenav, setSidenav]);
+  }, [setSidenav]);
 
   return (
     <div className="hidden lgl:flex flex-col gap-4 sticky top-4 self-start z-[200]">
@@ -39,7 +36,6 @@ const DesktopSidebar = ({
         {/* Sidenav */}
         {sidenav && (
           <div className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-50 z-[600]" onClick={onOutsideClick}>
-            {console.log("Rendering sidenav, sidenav state:", sidenav)}
             <div className="w-96 h-full relative">
               <motion.div
                 ref={sidenavRef}
