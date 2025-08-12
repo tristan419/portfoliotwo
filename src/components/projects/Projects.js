@@ -1,69 +1,55 @@
+// ...existing code...
 import React from "react";
-import {
-  workImgOne,
-  workImgTwo,
-  workImgThree,
-  workImgFour,
-  workImgFive,
-  workImgSix,
-  workImgSeven,
-  workImgEight,
-} from "../../assets";
-import Title from "../home/Title";
 import ProjectsCard from "./ProjectsCard";
+import workOne from "../../assets/work/workImgOne.jpg";
+import workTwo from "../../assets/work/workImgTwo.jpg";
+import workThree from "../../assets/work/workImgThree.jpg";
+
+const projects = [
+  {
+    id: 1,
+    title: "E-commerce Demo",
+    imgSrc: workTwo,
+    description: "Demo shop with Stripe.",
+    liveUrl: "https://shop.example.com",
+    repoUrl: "https://github.com/yourname/ecommerce-demo"
+  },
+  {
+    id: 2,
+    title: "CLI Tool",
+    imgSrc: workThree,
+    description: "Node.js utilities.",
+    // 没有部署地址时，点击打开 GitHub
+    repoUrl: "https://github.com/yourname/cli-tool"
+  },
+  {
+    id: 3,
+    title: "My Portfolio",
+    imgSrc: workOne,
+    description: "Personal site built with React.",
+    liveUrl: "https://portfoliotwo-phi.vercel.app/about",
+    repoUrl: "https://github.com/tristan419/portfoliotwo"
+  },
+  
+];
 
 const Projects = () => {
   return (
-    <div>
-      <Title title="Recent" subTitle="Projects" />
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 lgl:gap-10">
-        <div className="px-6">
-          <ProjectsCard
-            title="Blog Website"
-            category="Website"
-            image={workImgThree}
-          />
-          <ProjectsCard
-            title="Business Card Design"
-            category="Design"
-            image={workImgOne}
-          />
-          <ProjectsCard
-            title="Infinity Logo"
-            category="Logo"
-            image={workImgTwo}
-          />
-          <ProjectsCard
-            title="Mobile Application"
-            category="Shopping"
-            image={workImgFive}
-          />
-        </div>
-        <div className="px-6">
-          <ProjectsCard
-            title="Responsive website"
-            category="E-commerce"
-            image={workImgFour}
-          />
-          <ProjectsCard
-            title="Grapic Design"
-            category="Design"
-            image={workImgSix}
-          />
-          <ProjectsCard
-            title="Ideas & Blog"
-            category="Website"
-            image={workImgEight}
-          />
-          <ProjectsCard
-            title="ZOSS Logo"
-            category="Logo"
-            image={workImgSeven}
-          />
-        </div>
-      </div>
-    </div>
+    <section id="projects" className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4">
+      {projects.map(p => (
+        <ProjectsCard
+          key={p.id}
+          title={p.title}
+          description={p.description}
+          imgSrc={p.imgSrc}
+          tags={p.tags}
+          liveUrl={p.liveUrl}
+          repoUrl={p.repoUrl}
+        />
+      ))}
+    </section>
   );
 };
 
 export default Projects;
+// ...existing code...
