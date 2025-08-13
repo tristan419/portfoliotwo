@@ -9,12 +9,12 @@ const MyServices = () => {
     <div className="grid grid-cols-1 md:grid-cols-2">
       <ServicesCard
         icons={<TbBrandNextjs />}
-        title="Next.js Websites & Dashboards"
+        title="Next.js Websites"
         subTitle="Production-ready Next.js (TS + Tailwind), SSR/SSG, clean routing & layouts, deployed on Vercel."
       />
       <ServicesCard
         icons={<VscBeaker />}
-        title="Automated Testing TestSprite"
+        title="Automated Testing"
         subTitle="AI-generated & cloud-run tests with reports; Playwright covers critical E2E paths and integrates with CI."
       />
       <ServicesCard
